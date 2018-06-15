@@ -1,4 +1,5 @@
 var clicks = 0;
+var helpers = 0;
 
 function clickUp(num)
 {
@@ -27,3 +28,24 @@ function format()
 	x = (10*x) + 125
 	document.getElementById("box").style.width = (x + "px");
 }
+
+function buyHelp()
+{
+	var helperCost = Math.floor(10 * Math.pow(1.1,helpers));
+	if(clicks >= helperCost)
+	{
+		helpers++;
+		clicks -= helperCost;
+		document.getElementById("helpNum").innerHTML = helpers;
+		document.getElementById("clickNum").innerHTML = clicks;
+	}
+	var nextCost = Math.floor(10 * Math.pow(1.1,helpers)); 
+    document.getElementById("helpCost").innerHTML = "Costs " + nextCost + " Clicks";
+	
+}
+
+window.setInterval(function(){
+
+	clickUp(helpers);
+
+}, 1000);
