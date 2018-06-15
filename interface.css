@@ -1,0 +1,14 @@
+body {
+    background-color: #0080AA;
+}
+
+.center {
+    margin: auto;
+    width: 13%;
+    border: 3px solid black;
+    padding: 10px;
+}
+
+p{
+	display:inline;
+}
