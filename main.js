@@ -24,6 +24,6 @@ function checkS()
 function format()
 {
 	var x = document.getElementById("clickNum").textContent.length;
-	x += 12;
-	document.getElementById("box").style.width = (x + "%");
+	x = (10*x) + 125
+	document.getElementById("box").style.width = (x + "px");
 }
