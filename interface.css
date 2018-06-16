@@ -3,7 +3,9 @@ body {
 }
 
 .center {
-    margin: auto;
+    margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
     width: 125px;
     border: 3px solid black;
     padding: 10px;
@@ -14,31 +16,69 @@ p{
 	display:inline;
 }
 
-.midBtn {
-    padding: 7px 0;
-    border: 3px solid black;
-    text-align: center;
-	position: fixed;
-    top: 75px;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+*.unselectable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
 }
 
-.left-center{
-    width: 200px;
+.help-Center{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+    width: 140px;
     border: 3px solid black;
     padding: 10px;
 	text-align: center;
-	position: fixed;
-    top: 108px;
-    left: 10px;
 }
 
-.btnLeft {
-    padding: 7px 0;
-    border: 3px solid black;
-    text-align: center;
-	position: fixed;
-    top: 156px;
-    left: 75px;
+/*--------------------- Graph made by Alex at https://forums.obsidianportal.com/discussion/3897/responsive-xp-bar --------------------------*/
+.graph {
+width: 0
+height: 30px;
+border: 5px solid #888;
+background-color: #CCC;
+-webkit-gradient(linear, left top, right top, from(#A8A8A8), to(#CCC));
+background-image: -webkit-linear-gradient(left, #A8A8A8, #CCC);
+background-image: -moz-linear-gradient(center top, #A8A8A8, #CCC);
+background-image: linear-gradient(to right, #A8A8A8, #CCC);
+position: fixed;
+    top: 0;
+    right: auto;
+	left: auto;
+}
+
+.bar {
+height: 29px;
+background-color: red;
+-webkit-gradient(linear, left top, right top, from(darkred), to(red));
+background-image: -webkit-linear-gradient(left, darkred, red);
+background-image: -moz-linear-gradient(left, darkred, red);
+
+background-image: linear-gradient(to right, darkred, red);
+}
+
+.xpValue {
+position: absolute;
+text-align: center;
+width: 75%;
+margin: 0px;
+line-height: 30px;
+}
+
+/*----------------------------------------------------------- end graph ----------------------------------------------------------------*/
+
+.center-trans{
+	padding:10px;
+    width:710px;
+    position:fixed;
+	top: 0;
+    right: auto;
+	left: auto;
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgba(204, 204, 204, 0);
+	
 }
