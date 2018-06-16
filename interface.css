@@ -64,7 +64,7 @@ background-image: linear-gradient(to right, darkred, red);
 .xpValue {
 position: absolute;
 text-align: center;
-width: 75%;
+width: 0%;
 margin: 0px;
 line-height: 30px;
 }
@@ -80,5 +80,16 @@ line-height: 30px;
 	left: auto;
     background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
     background: rgba(204, 204, 204, 0);
+	
+}
+
+.unlock-Center{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+    width: 160px;
+    border: 3px solid black;
+    padding: 10px;
+	text-align: center;
 	
 }
