@@ -9,6 +9,7 @@
 	</head>
 
 	<body>
+		
 		<div id="bar" class="graph bar xpValue"></div>
 		<div id="box" class="center unselectable" onclick="clickUp(1);">
 			<p>You have ©</p>
@@ -34,5 +35,16 @@
 			<p id="levelUpXP">36</p>
 			<p id="level">xp Lv:1</p>	
 		</div>
+		<div class="topRight" onclick="openNav()">
+		<p>Settings</p>
+		</div>
+		<div id="myNav" class="overlay">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav();">&times;</a>
+				<div class="overlay-content">
+					<a onclick="save();">Save</a>
+					<a id="mute" onclick="mute();">Mute</a>
+				</div>
+		</div>
+		
 	</body>
 </html>

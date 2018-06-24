@@ -4,11 +4,22 @@ var power =0;
 var currXp = 0;
 var lv = 1;
 var nextXp = 36;
+var hasHitLv25 = false;
+var loaded = false;
+var myaudio = new Audio('music.mp3');
+myaudio.loop = true;
 
 
 function clickUp(num)
 {
 	clicks = num===1? (power===0?clicks + num : (power*10) + clicks ) : clicks + num;
+	updateBar(num);
+	checkS();
+	format();
+}
+
+function updateBar(num)
+{
 	currXp += num;
 	if(currXp >= nextXp)
 	{
@@ -19,17 +30,22 @@ function clickUp(num)
 	var per = currXp / nextXp;
 	per = Math.floor(per*100);
 	document.getElementById("clickNum").innerHTML = clicks;
-	var elements = document.querySelectorAll('.graph');
-    for(var i=0; i<elements.length; i++){
-    elements[i].style.width = per + "%";
+	var elements = document.querySelectorAll('.graph');	
+    for(var i=0; i<elements.length; i++)
+	{
+		elements[i].style.width = per + "%";
 	}
 	document.getElementById("currentXP").innerHTML = currXp;
 	document.getElementById("levelUpXP").innerHTML = nextXp;
 	document.getElementById("level").innerHTML = "xp Lv:" + lv;
-	checkS();
-	format();
+}
 
-	
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
 }
 
 function checkS()
@@ -46,8 +62,29 @@ function checkS()
 
 
 	
-	
+function save()
+{
+	var save = {
+    clicks: clicks,
+    helpers:helpers,
+	power:power,
+	currXp:currXp,
+	lv:lv,
+	nextXp:nextXp,
+	}
+	localStorage.setItem("save",JSON.stringify(save));
+}	
 
+function load()
+{
+	var savegame = JSON.parse(localStorage.getItem("save"));
+	if (typeof savegame.clicks !== "undefined") clicks = savegame.clicks;
+	if (typeof savegame.helpers !== "undefined") helpers = savegame.helpers;
+	if (typeof savegame.power !== "undefined") power = savegame.power;
+	if (typeof savegame.currXp !== "undefined") currXp = savegame.currXp;
+	if (typeof savegame.lv !== "undefined") lv = savegame.lv;
+	if (typeof savegame.nextXp !== "undefined") nextXp = savegame.nextXp;
+}
 
 function format()
 {
@@ -89,14 +126,27 @@ function buyPower()
 	}
 }
 
+function mute()
+{
+	myaudio.muted = !myaudio.muted;
+	document.getElementById("mute").innerHTML = document.getElementById("mute").innerHTML === "Mute" ? "UnMute" : "Mute";
+}
+
 window.setInterval(function(){
 	clickUp(helpers);
 	document.getElementById("clickNum").innerHTML = clicks;
 	document.getElementById("helpNum").innerHTML = helpers;
-	if(lv >= 25)
+	if(hasHitLv25 !== false && lv >= 25 )
 	{
 		document.getElementById("powerNum").innerHTML = " Lv: ";
 		document.getElementById("unlockStart").innerHTML = "Click Power";
 		document.getElementById("power").innerHTML = power;
+		hasHitLv25 = true;
+	}
+	if(!loaded)
+	{
+		load();
+		myaudio.play();
+		loaded=true;
 	}
 }, 1000);
